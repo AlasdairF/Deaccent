@@ -2,8 +2,8 @@ package deaccent
 
 import (
     "unicode"
-    "golang.org/x/text/transform"
-    "golang.org/x/text/unicode/norm"
+    "go.googlesource.com/text/transform"
+    "go.googlesource.com/text/unicode/norm"
 	"io"
 )
 
