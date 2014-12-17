@@ -2,6 +2,7 @@ package deaccent
 
 import (
     "unicode"
+	"unicode/utf8"
     "golang.org/x/text/transform"
     "golang.org/x/text/unicode/norm"
 	"io"
@@ -20,4 +21,12 @@ func Bytes(b []byte) ([]byte, error) {
 	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
 	res, _, err := transform.Bytes(t, b)
 	return res, err
+}
+
+func Rune(r rune) rune {
+	b := make([]byte, 3)
+	n := utf8.EncodeRune(b, r)
+	b, _ = Bytes(b[0:n])
+	newrune, _ := utf8.DecodeRune(b)
+	return newrune
 }
