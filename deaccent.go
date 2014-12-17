@@ -15,3 +15,9 @@ func NewReader(r io.Reader) io.Reader {
 	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
 	return transform.NewReader(r, t)
 }
+
+func Bytes(b []byte) ([]byte, error) {
+	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
+	res, _, err := transform.Bytes(t, b)
+	return res, err
+}
