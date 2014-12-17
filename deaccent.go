@@ -7,7 +7,7 @@ import (
 	"io"
 )
 
-isMn := func(r rune) bool {
+func isMn(r rune) bool {
     return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
 }
 
